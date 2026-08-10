@@ -1,5 +1,6 @@
 ---
 {{- if .Values.tests.enabled }}
+  {{- $scheme := (.Values.useHttps | ternary "https" "http") -}}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -22,6 +23,6 @@ spec:
       command: ['sh', '-ec']
       args:
         - >
-          wget -qO- "{{- if .Values.knative.enabled -}}http://{{ include "ollama.fullname" . }}.{{ include "ollama.namespace" . }}.svc.cluster.local{{- else -}}http://{{ include "ollama.fullname" . }}:{{ .Values.service.port }}{{- end -}}" >/dev/null
+          wget -qO- "{{- if .Values.knative.enabled -}}{{ $scheme }}://{{ include "ollama.fullname" . }}.{{ include "ollama.namespace" . }}.svc.cluster.local{{- else -}}{{ $scheme }}://{{ include "ollama.fullname" . }}:{{ .Values.service.port }}{{- end -}}" >/dev/null
   restartPolicy: Never
 {{ end }}

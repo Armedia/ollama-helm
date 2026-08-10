@@ -149,6 +149,7 @@ spec:
             httpGet:
               path: {{ .Values.livenessProbe.path }}
               port: http
+              scheme: HTTP{{ .Values.useHttps | ternary "S" "" }}
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
             timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
@@ -160,6 +161,7 @@ spec:
             httpGet:
               path: {{ .Values.readinessProbe.path }}
               port: http
+              scheme: HTTP{{ .Values.useHttps | ternary "S" "" }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
             timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}

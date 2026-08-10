@@ -524,3 +524,6 @@ tests:
   annotations: {}
 
 podSchedulerName: ""
+
+# Enable or disable HTTPS
+useHttps: false
