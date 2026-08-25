@@ -48,6 +48,8 @@ namespaceOverride: ""
 
 # Ollama parameters
 ollama:
+  # Host Ollama is listening on
+  host: "0.0.0.0"
   # Port Ollama is listening on
   port: 11434
 
