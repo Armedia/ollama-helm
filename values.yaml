@@ -52,6 +52,8 @@ ollama:
   host: "0.0.0.0"
   # Port Ollama is listening on
   port: 11434
+  # Override OLLAMA_HOST value
+  envOverride: ""
 
   gpu:
     # -- Enable GPU integration
